@@ -175,6 +175,7 @@ function openOrder(productId, flow) {
   order.qty         = 1;
   order.payMethod   = null;
   order.contact     = '';
+  order.locality    = '';
 
   // Determine steps
   orderStep  = prod.flavors.length > 0 ? 0 : 1;
@@ -398,7 +399,13 @@ function renderContactStep(container) {
            placeholder="@username sau +373..."
            value="${order.contact}"
            autocomplete="off" />
-    <p class="field-hint">Introduceți @username Telegram sau numărul de telefon</p>`;
+    <p class="field-hint">@username Telegram sau numărul de telefon</p>
+    <input class="contact-input" id="locality-field" type="text"
+           placeholder="Localitate (ex: Chișinău, Bălți...)"
+           value="${order.locality}"
+           autocomplete="off"
+           style="margin-top:10px" />
+    <p class="field-hint">Orașul / localitatea ta</p>`;
   container.appendChild(sec);
 
   const sum = document.createElement('div');
@@ -412,11 +419,17 @@ function renderContactStep(container) {
 
   setNextBtn('✅ Confirmă comanda', true, false);
 
-  const field = document.getElementById('contact-field');
-  field.addEventListener('input', () => {
-    order.contact = field.value;
-    document.getElementById('btn-next').disabled = field.value.trim().length < 3;
-  });
+  function checkFields() {
+    const c = document.getElementById('contact-field').value.trim();
+    const l = document.getElementById('locality-field').value.trim();
+    document.getElementById('btn-next').disabled = c.length < 3 || l.length < 2;
+  }
+
+  const field    = document.getElementById('contact-field');
+  const locField = document.getElementById('locality-field');
+
+  field.addEventListener('input', () => { order.contact  = field.value;    checkFields(); });
+  locField.addEventListener('input', () => { order.locality = locField.value; checkFields(); });
 
   setTimeout(() => field.focus(), 300);
 }
@@ -446,7 +459,7 @@ function nextStep() {
       renderStep();
     }
   } else if (orderStep === 2) {
-    if (order.contact.trim().length < 3) return;
+    if (order.contact.trim().length < 3 || order.locality.trim().length < 2) return;
     submitOrder();
   }
 }
@@ -477,7 +490,8 @@ function submitOrder() {
     qty:          order.qty,
     total:        total,
     flavor:       order.flavor || null,
-    contact:      order.contact || null,
+    contact:      order.contact  || null,
+    locality:     order.locality || null,
   };
 
   tg.HapticFeedback.notificationOccurred('success');
