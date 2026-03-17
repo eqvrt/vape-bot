@@ -46,7 +46,7 @@ logger = logging.getLogger(__name__)
 
 PRODUCT_NAMES = {
     "chaser_10ml":  "Chaser 10ML • 50MG",
-    "monashka":     "ЗЛАЯ МОНАШКА 30ML",
+    "monashka":     "MONASHKA HOT SPOT 30ML",
     "elf_liq":      "Elf LIQ 30ML • 50MG",
     "xros_series":  "XROS Series 0.6",
     "xros5_mini":   "XROS 5 Mini",
@@ -56,6 +56,15 @@ PRODUCT_NAMES = {
     "elfbar_combo": "ELFBAR COMBO PRO",
     "xros_pro2":    "XROS PRO 2",
     "xros_mini":    "XROS MINI",
+}
+
+# Aromele produselor (in ordinea din catalog.js)
+PRODUCT_FLAVORS = {
+    "chaser_10ml":  ["🍉 Pepene rosu", "🍌 Banana"],
+    "monashka":     ["🍇 Guma Struguri", "🥝 Kiwi-Pitahaya-Aloe", "🥤 Cola-Tamarind-Lamaie", "🏖 Mango-Cirese", "🍯 Dulceata Zmeura", "🍑 Piersica-Litchi"],
+    "elf_liq":      ["🍍 Pineapple Ice", "😑 Raspberry Lychee", "🍎 Double Apple", "🌹 Jasmine Raspberry", "🖤 Blackberry Lemon", "🍎 Apple Peach", "😑 Blueberry Raspberry", "🍎 Apple Pear", "💙 Blue Razz Ice", "🍍 Pineapple Colada", "🍎 Sour Apple", "💞 Pink Grapefruit", "💕 Pink Lemonade", "🍉 Watermelon", "🌹 Blueberry Rose Mint", "🥶 Blue Razz Lemonade", "🥰 Raspberry Lychee 2", "🥥 Kiwi Passion Guava", "😑 Blueberry Sour Raspberry", "😃 Cherry", "😄 Watermelon Cherry", "😖 Strawberry Cherry Lemon", "😏 Strawberry Raspberry Cherry Ice", "🍋 Lemon Lime"],
+    "chaser_lux":   ["🍓 Blueberry Raspberry", "🥤 Berry Lemonade", "🍎 Sour Apple", "🍉🍬 Sour Watermelon Candy", "🍉 Watermelon Raspberry", "🫂 Energetic", "🥶 Berry Needles", "😃 Cherry Lemon", "🥳 Coconut Melon"],
+    "chaser_ultra": ["🍓 Wild Strawberry", "🍉🍋 Watermelon Lemon", "🫐 Triple Raspberry", "🫐🍇 Blackberry Sour Raspberry", "🍓🍒 Triple Berry"],
 }
 
 
@@ -115,76 +124,96 @@ async def cmd_stock(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     args = context.args
 
-    if not args:
-        stock, _ = get_stock()
-        if not stock:
-            await update.message.reply_text("❌ Nu am putut citi stocul de pe GitHub.")
-            return
-
-        lines = ["📦 *Stoc curent:*\n"]
-        for prod_id, qty in stock.items():
-            nume   = PRODUCT_NAMES.get(prod_id, prod_id)
-            status = "✅" if qty > 0 else "⏳"
-            lines.append(f"{status} `{prod_id}` — *{qty} buc.*\n    _{nume}_")
-
-        lines.append("\n📝 *Cum schimbi stocul:*")
-        lines.append("`/stock produs_id cantitate`")
-        lines.append("_Exemplu: /stock chaser\\_10ml 15_")
-
-        await update.message.reply_text("\n".join(lines), parse_mode="Markdown")
-        return
-
-    if len(args) != 2:
-        await update.message.reply_text(
-            "❌ Format greșit!\n\n"
-            "✅ Corect: `/stock produs_id cantitate`\n"
-            "Exemplu: `/stock chaser_10ml 15`\n\n"
-            "Scrie `/stock` pentru lista produselor.",
-            parse_mode="Markdown",
-        )
-        return
-
-    prod_id = args[0]
-    try:
-        qty = int(args[1])
-        if qty < 0:
-            raise ValueError
-    except ValueError:
-        await update.message.reply_text("❌ Cantitatea trebuie să fie un număr pozitiv!")
-        return
-
     stock, sha = get_stock()
-    if not sha:
+    if not stock:
         await update.message.reply_text("❌ Nu am putut citi stocul de pe GitHub.")
         return
 
+    # Fara argumente → arata tot stocul
+    if not args:
+        lines = ["📦 *Stoc curent:*\n"]
+        for prod_id, val in stock.items():
+            nume = PRODUCT_NAMES.get(prod_id, prod_id)
+            if isinstance(val, list):
+                total = sum(val)
+                lines.append(f"{'✅' if total > 0 else '⏳'} *{nume}* — {total} buc. total")
+                flavors = PRODUCT_FLAVORS.get(prod_id, [])
+                for i, q in enumerate(val):
+                    fl = flavors[i] if i < len(flavors) else f"Aroma {i}"
+                    lines.append(f"   `{i}` {fl} — *{q} buc.*")
+            else:
+                lines.append(f"{'✅' if val > 0 else '⏳'} `{prod_id}` — *{val} buc.*  _{nume}_")
+        lines.append("\n📝 *Cum schimbi stocul:*")
+        lines.append("Produs fara arome: `/stock xros5\\_mini 5`")
+        lines.append("Aroma specifica: `/stock chaser\\_10ml 0 5`")
+        lines.append("_(0 = indexul aromei din lista de sus)_")
+        await update.message.reply_text("\n".join(lines), parse_mode="Markdown")
+        return
+
+    prod_id = args[0]
     if prod_id not in stock:
         await update.message.reply_text(
-            f"❌ Produsul `{prod_id}` nu există!\n\nScrie `/stock` pentru lista produselor.",
+            f"❌ Produsul `{prod_id}` nu exista!\nScrie `/stock` pentru lista.",
             parse_mode="Markdown",
         )
         return
 
-    old_qty        = stock[prod_id]
-    stock[prod_id] = qty
+    val = stock[prod_id]
+    nume = PRODUCT_NAMES.get(prod_id, prod_id)
 
-    if save_stock(stock, sha):
-        nume   = PRODUCT_NAMES.get(prod_id, prod_id)
-        status = "✅ În stoc" if qty > 0 else "⏳ Precomandă"
-        await update.message.reply_text(
-            f"✅ *Stoc actualizat!*\n\n"
-            f"📦 *{nume}*\n"
-            f"🔢 {old_qty} buc. → *{qty} buc.*\n"
-            f"📊 Status: {status}\n\n"
-            f"_Site-ul se actualizează în ~1 minut._",
-            parse_mode="Markdown",
-        )
-        logger.info("Stoc actualizat: %s = %d", prod_id, qty)
+    # Produs cu arome: /stock produs_id flavor_index cantitate
+    if isinstance(val, list):
+        if len(args) != 3:
+            flavors = PRODUCT_FLAVORS.get(prod_id, [])
+            lines = [f"📦 *{nume}* — arome:\n"]
+            for i, q in enumerate(val):
+                fl = flavors[i] if i < len(flavors) else f"Aroma {i}"
+                lines.append(f"`{i}` {fl} — *{q} buc.*")
+            lines.append(f"\nModifica: `/stock {prod_id} INDEX CANTITATE`")
+            lines.append(f"_Exemplu: /stock {prod_id} 0 5_")
+            await update.message.reply_text("\n".join(lines), parse_mode="Markdown")
+            return
+        try:
+            idx = int(args[1])
+            qty = int(args[2])
+            if qty < 0 or idx < 0 or idx >= len(val): raise ValueError
+        except ValueError:
+            await update.message.reply_text("❌ Format gresit! Exemplu: `/stock chaser_10ml 0 5`", parse_mode="Markdown")
+            return
+        old_qty = val[idx]
+        val[idx] = qty
+        stock[prod_id] = val
+        flavors = PRODUCT_FLAVORS.get(prod_id, [])
+        fl_name = flavors[idx] if idx < len(flavors) else f"Aroma {idx}"
+        if save_stock(stock, sha):
+            await update.message.reply_text(
+                f"✅ *Stoc actualizat!*\n📦 *{nume}*\n🍬 {fl_name}\n🔢 {old_qty} → *{qty} buc.*\n\n_Site-ul se actualizeaza in ~1 minut._",
+                parse_mode="Markdown",
+            )
+        else:
+            await update.message.reply_text("❌ Eroare la salvare!")
+
+    # Produs fara arome: /stock produs_id cantitate
     else:
-        await update.message.reply_text(
-            "❌ Eroare la salvarea stocului pe GitHub!\n"
-            "Verifică că GITHUB_TOKEN este corect în bot.py"
-        )
+        if len(args) != 2:
+            await update.message.reply_text(f"❌ Exemplu: `/stock {prod_id} 10`", parse_mode="Markdown")
+            return
+        try:
+            qty = int(args[1])
+            if qty < 0: raise ValueError
+        except ValueError:
+            await update.message.reply_text("❌ Cantitatea trebuie sa fie un numar pozitiv!")
+            return
+        old_qty = val
+        stock[prod_id] = qty
+        if save_stock(stock, sha):
+            status = "✅ In stoc" if qty > 0 else "⏳ Precomanda"
+            await update.message.reply_text(
+                f"✅ *Stoc actualizat!*\n📦 *{nume}*\n🔢 {old_qty} → *{qty} buc.*\n📊 {status}\n\n_Site-ul se actualizeaza in ~1 minut._",
+                parse_mode="Markdown",
+            )
+        else:
+            await update.message.reply_text("❌ Eroare la salvare!")
 
 
 # ════════════════════════════════════════════════════════
