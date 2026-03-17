@@ -176,7 +176,7 @@ XROS 5 Mini — максимум вкуса и удобства 🔥
     badge: "☄️",
     price: 550,
     stock: 3,
-    image: "https://i.ibb.co/1tkrNR0B/xros-5-mini.jpg",
+    image: "https://i.ibb.co/CGMdCrD/xros-5-nano.jpg",
     description: `POD ultra-compact, perfect pentru oricine este mereu in miscare!
 XROS 5 Nano - mic, dar puternic 🔥
 
