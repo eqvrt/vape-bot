@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>VapeLiquid 💨</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+  <!-- Animated emoji background -->
+  <div id="emoji-bg" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN: Home
+  ════════════════════════════════════════════ -->
+  <section id="screen-home" class="screen active">
+    <div class="home-inner">
+      <div class="home-logo-wrap">
+        <div class="home-logo-circle">💨</div>
+        <h1 class="home-title">VapeLiquid</h1>
+        <p class="home-sub">Lichide &amp; Accesorii Premium<br>Жидкости &amp; Аксессуары</p>
+      </div>
+      <div class="home-grid">
+        <button class="home-card c1" onclick="showMenu()">
+          <span class="hc-icon">📋</span>
+          <span class="hc-name">Meniu</span>
+          <span class="hc-sub">Меню</span>
+        </button>
+        <button class="home-card c2" onclick="showMenu()">
+          <span class="hc-icon">🛒</span>
+          <span class="hc-name">Procura</span>
+          <span class="hc-sub">Купить</span>
+        </button>
+        <button class="home-card c3" onclick="showMenu()">
+          <span class="hc-icon">📦</span>
+          <span class="hc-name">Comanda</span>
+          <span class="hc-sub">Заказ</span>
+        </button>
+        <button class="home-card c4" onclick="showContacte()">
+          <span class="hc-icon">📞</span>
+          <span class="hc-name">Contacte</span>
+          <span class="hc-sub">Контакты</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN: Menu
+  ════════════════════════════════════════════ -->
+  <section id="screen-menu" class="screen">
+    <div class="topbar">
+      <button class="back-btn" onclick="goHome()" title="Înapoi">‹</button>
+      <h2>📋 Meniu / Меню</h2>
+    </div>
+    <div id="menu-content" class="scroll-area"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       SCREEN: Contacte
+  ════════════════════════════════════════════ -->
+  <section id="screen-contacte" class="screen">
+    <div class="topbar">
+      <button class="back-btn" onclick="goHome()">‹</button>
+      <h2>📞 Contacte / Контакты</h2>
+    </div>
+    <div class="scroll-area">
+      <div class="contact-hero">
+        <div class="contact-hero-icon">💨</div>
+        <p>Suntem aici pentru tine oricând!<br>Мы здесь для тебя в любое время!</p>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">👥</div>
+        <div class="info-body">
+          <p class="info-label">Grup Telegram / Telegram группа</p>
+          <a class="info-link" href="https://t.me/vape228lquid" target="_blank">@vape228lquid</a>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">👤</div>
+        <div class="info-body">
+          <p class="info-label">Administrator / Администратор</p>
+          <a class="info-link" href="https://t.me/vape_liquid228" target="_blank">@vape_liquid228</a>
+        </div>
+      </div>
+      <p class="info-note">😊 Ne contactează oricând!<br>Пиши нам в любое время! 😊</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       ORDER OVERLAY (bottom sheet)
+  ════════════════════════════════════════════ -->
+  <div id="order-overlay" class="overlay hidden" role="dialog" aria-modal="true">
+    <div class="overlay-backdrop" onclick="closeOrder()"></div>
+    <div class="overlay-sheet">
+      <div class="sheet-handle"></div>
+      <button class="sheet-close" onclick="closeOrder()" aria-label="Închide">✕</button>
+
+      <div class="sheet-head">
+        <h2 id="sheet-title" class="sheet-title">🛒 Procura</h2>
+        <p id="sheet-prod-name" class="sheet-prod"></p>
+        <div id="sheet-steps" class="step-dots"></div>
+      </div>
+
+      <!-- Dynamic content per step -->
+      <div id="order-content" class="order-content"></div>
+
+      <div class="sheet-footer">
+        <button id="btn-prev" class="btn-prev" onclick="prevStep()" style="display:none">← Înapoi</button>
+        <button id="btn-next" class="btn-next" onclick="nextStep()" disabled>Continuă →</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="catalog.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
