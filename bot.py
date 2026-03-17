@@ -26,7 +26,7 @@ from telegram.ext import (
 # ══════════════════════════════════════════════════════════════════════
 #  CONFIGURARE  ←  SCHIMBĂ ACESTE VALORI!
 # ══════════════════════════════════════════════════════════════════════
-BOT_TOKEN      = "8794180319:AAH2JkZojAraZEobPX2hyfHMUaux11bDDt8"
+BOT_TOKEN      = "8657766831:AAFQI6CsL9k1HYXDlvpQ4O4op_t66rXKxII"
 OWNER_ID       = 6826677522
 WEBAPP_URL     = "https://eqvrt.github.io/vape-bot"
 
