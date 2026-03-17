@@ -66,7 +66,7 @@ Format compact de 10 ml - convenabil de luat cu tine 💨
   {
     id: "elf_liq",
     name: "Elf LIQ 30ML - 50MG",
-    badge: "✨",
+    badge: "🧊",
     price: 200,
     stock: 48,
     image: "https://i.ibb.co/ZvK959V/elf-liq.jpg",
@@ -112,7 +112,7 @@ Doar pentru cei care iubesc aburul luminos, bogat si puternic ⚡️
   },
   {
     id: "xros_series",
-    name: "Vaporesso XROS Series 0.6 - 2ML / 3ML",
+    name: "Vaporesso XROS Series 0.6",
     badge: "✨",
     price: 70,
     stock: 20,
@@ -122,7 +122,6 @@ Perfect pentru POD-ul tau - abur luminos, gust bogat ⚡️
 
 Compatibilitate: Vaporesso XROS Series
 Rezistenta: 0.6 Ohm
-Volum: 2ML / 3ML
 
 ---
 
@@ -130,9 +129,11 @@ Volum: 2ML / 3ML
 Идеально для твоего POD — яркий пар, насыщенный вкус ⚡️
 
 Совместимость: Vaporesso XROS Series
-Сопротивление: 0.6 Ω
-Объём: 2ML / 3ML`,
-    flavors: [],
+Сопротивление: 0.6 Ω`,
+    flavors: [
+      "📦 2ML",
+      "📦 3ML",
+    ],
   },
   {
     id: "xros5_mini",
@@ -173,7 +174,7 @@ XROS 5 Mini — максимум вкуса и удобства 🔥
     id: "xros5_nano",
     name: "Vaporesso XROS 5 Nano",
     badge: "☄️",
-    price: 380,
+    price: 550,
     stock: 3,
     image: "https://i.ibb.co/1tkrNR0B/xros-5-mini.jpg",
     description: `POD ultra-compact, perfect pentru oricine este mereu in miscare!
@@ -318,6 +319,67 @@ O tigara electronica stilata cu posibilitatea de a schimba 3 gusturi diferite!
 🌀 3 вкуса в одном устройстве
 ⚡ Стильно - Вкусно - Удобно`,
     flavors: [],
+  },
+  {
+    id: "elfbar_bc45000",
+    name: "ELF BAR BC45000",
+    badge: "💨",
+    price: 430,
+    stock: 5,
+    image: "https://i.ibb.co/rRGp30Js/elfbar-bc.jpg",
+    description: `ELF BAR BC45000 — un nivel superior fata de obișnuite 💨
+Vrei maximum de gust si placere de durata? Exact ce cauti 😏
+Stilat, puternic si convenabil — totul intr-un singur dispozitiv ⚡️
+
+🍉 Watermelon Ice — pepene dulce + racoare revigoranta ❄️
+💨 Pana la 45000 pufuri — tine mult
+💧 Baterie fiabila si gust stabil pana la final
+😈 Gust intens din prima tragere
+
+---
+
+ELF BAR BC45000 — уровень выше обычных одноразок 💨
+Хочешь максимум вкуса и долгий кайф? Тогда это именно то, что нужно 😏
+Стильно, мощно и удобно — всё в одном девайсе ⚡️
+
+🍉 Watermelon Ice — сладкий арбуз + освежающий холодок ❄️
+💨 До 45000 затяжек — реально надолго
+💧 Надёжная батарея и стабильный вкус до конца
+😈 Яркий вкус с первой тяги`,
+    flavors: [
+      "🍉 Watermelon Ice",
+    ],
+  },
+  {
+    id: "solana_puff",
+    name: "SOLANA Puff Juice 30ML - 50MG",
+    badge: "🍇",
+    price: 200,
+    stock: 10,
+    image: "https://i.ibb.co/CGMdCrD/xros-5-nano.jpg",
+    description: `SOLANA Puff Juice — maximum de gust in fiecare tragere 💨
+O linie top care impresioneza prin gust 😏
+Echilibru perfect intre tarie si intensitate — 50MG/ML ⚡️
+
+📦 Volum: 30ML
+⚡️ Tarie: 50MG/ML
+💨 Perfect pentru sisteme POD
+
+---
+
+SOLANA Puff Juice — максимум вкуса в каждом затяге 💨
+Залетела топовая линейка, которая разрывает по вкусу 😏
+Идеальный баланс крепости и насыщенности — 50MG/ML ⚡️
+
+📦 Объём: 30ML
+⚡️ Крепость: 50MG/ML
+💨 Идеально для POD-систем`,
+    flavors: [
+      "🍇 Grape / Struguri",
+      "🫐 Blueberry Bubble Gum / Afine si Guma",
+      "🍎🍑 Apple Peach / Mar si Piersica",
+      "🫐🍇 Blueberry Blackcurrant / Afine si Coacaze",
+    ],
   },
   {
     id: "xros_pro2",
