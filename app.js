@@ -18,13 +18,15 @@ tg.expand();
 let currentScreen = 'home';
 
 const order = {
-  product:     null,   // catalog item
-  flow:        null,   // 'procura' | 'precomanda'
-  flavorIndex: null,
-  flavor:      null,
-  qty:         1,
-  payMethod:   null,   // 'telegram_pay' | 'contact'
-  contact:     '',
+  product:      null,
+  flow:         null,
+  flavorIndex:  null,
+  flavor:       null,
+  flavorStock:  null,  // stocul aromei selectate
+  qty:          1,
+  payMethod:    null,
+  contact:      '',
+  locality:     '',
 };
 
 let orderStep  = 0;   // 0: flavor, 1: qty+pay, 2: contact
@@ -247,19 +249,22 @@ function renderFlavorStep(container) {
 
   const list = section.querySelector('#flavor-list');
   order.product.flavors.forEach((fl, i) => {
+    const fs = getFlavorStock(order.product, i);
+    const available = fs > 0;
     const btn = document.createElement('button');
-    btn.className = 'flavor-opt' + (order.flavorIndex === i ? ' sel' : '');
-    btn.innerHTML = `${fl}<span class="check">${order.flavorIndex === i ? '✓' : ''}</span>`;
-    btn.onclick = () => selectFlavor(i, fl);
+    btn.className = 'flavor-opt' + (order.flavorIndex === i ? ' sel' : '') + (!available ? ' unavail' : '');
+    btn.innerHTML = `${fl}<span class="flavor-stock-badge">${available ? fs + ' buc.' : '⏳ Epuizat'}</span><span class="check">${order.flavorIndex === i ? '✓' : ''}</span>`;
+    if (available) btn.onclick = () => selectFlavor(i, fl, fs);
     list.appendChild(btn);
   });
 
   setNextBtn('Continuă →', false, order.flavorIndex !== null);
 }
 
-function selectFlavor(idx, fl) {
+function selectFlavor(idx, fl, fs) {
   order.flavorIndex = idx;
   order.flavor      = fl;
+  order.flavorStock = fs;
 
   document.querySelectorAll('.flavor-opt').forEach((el, i) => {
     const sel = i === idx;
@@ -274,7 +279,9 @@ function selectFlavor(idx, fl) {
 // ── Step 1: Quantity + Payment method ──
 function renderQtyPayStep(container) {
   const prod   = order.product;
-  const maxQty = order.flow === 'procura' ? prod.stock : 99;
+  const maxQty = order.flow === 'procura'
+    ? (order.flavorStock !== null ? order.flavorStock : prod.stock)
+    : 99;
 
   const sec1 = document.createElement('div');
   sec1.className = 's-section';
@@ -298,7 +305,9 @@ function renderQtyPayStep(container) {
 
 function changeQty(delta) {
   const prod   = order.product;
-  const maxQty = order.flow === 'procura' ? prod.stock : 99;
+  const maxQty = order.flow === 'procura'
+    ? (order.flavorStock !== null ? order.flavorStock : prod.stock)
+    : 99;
   order.qty    = Math.max(1, Math.min(maxQty, order.qty + delta));
 
   const qval = document.getElementById('qval');
@@ -479,11 +488,22 @@ async function loadStock() {
     if (!resp.ok) return;
     const stock = await resp.json();
     CATALOG.forEach(p => {
-      if (stock[p.id] !== undefined) p.stock = stock[p.id];
+      if (stock[p.id] === undefined) return;
+      p._stock = stock[p.id];
+      if (Array.isArray(stock[p.id])) {
+        p.stock = stock[p.id].reduce((a, b) => a + b, 0);
+      } else {
+        p.stock = stock[p.id];
+      }
     });
   } catch (e) {
-    // folosește stocul implicit din catalog.js
+    // foloseste stocul implicit din catalog.js
   }
+}
+
+function getFlavorStock(prod, idx) {
+  if (prod._stock && Array.isArray(prod._stock)) return prod._stock[idx] ?? 0;
+  return prod.stock;
 }
 
 // ════════════════════════════════════════════════════════

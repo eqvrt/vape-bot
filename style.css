@@ -532,6 +532,20 @@ body {
   border-color: #6c63ff;
 }
 
+.flavor-opt.unavail {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.flavor-stock-badge {
+  font-size: 11px;
+  color: #aaa;
+  font-weight: 500;
+  margin-left: auto;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
 /* ── Quantity ── */
 .qty-wrap {
   display: flex;
