@@ -1,13 +1,64 @@
 {
-  "chaser_10ml":  [5, 5],
-  "monashka":     [3, 3, 3, 3, 3, 3],
-  "elf_liq":      [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
-  "xros_series":  20,
-  "xros5_mini":   5,
-  "xros4_mini":   7,
-  "chaser_lux":   [3, 3, 3, 3, 3, 3, 3, 3, 3],
-  "chaser_ultra": [3, 3, 3, 3, 3],
+  "chaser_10ml": [
+    5,
+    0
+  ],
+  "monashka": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+  ],
+  "elf_liq": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "xros_series": 20,
+  "xros5_mini": 5,
+  "xros4_mini": 7,
+  "chaser_lux": [
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+  ],
+  "chaser_ultra": [
+    3,
+    3,
+    3,
+    3,
+    3
+  ],
   "elfbar_combo": 4,
-  "xros_pro2":    3,
-  "xros_mini":    6
+  "xros_pro2": 3,
+  "xros_mini": 6
 }
