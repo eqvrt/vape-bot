@@ -27,7 +27,7 @@ from telegram.ext import (
 #  CONFIGURARE  ←  SCHIMBĂ ACESTE VALORI!
 # ══════════════════════════════════════════════════════════════════════
 BOT_TOKEN      = "8657766831:AAFQI6CsL9k1HYXDlvpQ4O4op_t66rXKxII"
-OWNER_ID       = 6826677522
+OWNER_ID       = 815730266
 WEBAPP_URL     = "https://eqvrt.github.io/vape-bot"
 
 # GitHub — pentru actualizarea stocului din Telegram
