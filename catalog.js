@@ -163,7 +163,43 @@ XROS 5 Mini — максимум вкуса и удобства 🔥
 Аккумулятор 1500 mAh
 1 картридж в комплекте
 💎 Стильный дизайн`,
-    flavors: [],
+    flavors: [
+      "🖤 Mist Black",
+      "🤍 Mist White",
+      "🟠 Retro Orange",
+    ],
+  },
+  {
+    id: "xros5_nano",
+    name: "Vaporesso XROS 5 Nano",
+    badge: "☄️",
+    price: 380,
+    stock: 3,
+    image: "https://i.ibb.co/1tkrNR0B/xros-5-mini.jpg",
+    description: `POD ultra-compact, perfect pentru oricine este mereu in miscare!
+XROS 5 Nano - mic, dar puternic 🔥
+
+Putere pana la 16W
+Incarcare rapida Type-C ⚡️
+Rezistenta 0.6 Ohm
+Design ultra-slim
+1 cartus in set
+💎 Confort maxim
+
+---
+
+Ультракомпактный POD — идеален для тех, кто всегда в движении!
+XROS 5 Nano — маленький, но мощный 🔥
+
+Мощность до 16W
+Быстрая зарядка Type-C ⚡️
+Сопротивление 0.6 Ω
+Ультратонкий дизайн
+1 картридж в комплекте
+💎 Максимальный комфорт`,
+    flavors: [
+      "🤍 Nacre",
+    ],
   },
   {
     id: "xros4_mini",
@@ -194,7 +230,12 @@ XROS 4 Mini — стабильная работа, чистый вкус 🔥
 Аккумулятор 1000 mAh
 1 картридж в комплекте
 💎 Технология COREX`,
-    flavors: [],
+    flavors: [
+      "🥂 Champagne Gold",
+      "💛 Camo Yellow",
+      "🩷 Ice Pink",
+      "🖤 Black",
+    ],
   },
   {
     id: "chaser_lux",
@@ -306,7 +347,10 @@ XROS PRO 2 — это именно то, что тебе нужно.
 🔥 COREX — максимально насыщенный вкус
 💎 Стильный дизайн и дисплей
 📦 Несколько цветов в наличии`,
-    flavors: [],
+    flavors: [
+      "💚 Gem Green",
+      "✨ Glittering Gold",
+    ],
   },
   {
     id: "xros_mini",
@@ -322,7 +366,6 @@ Varianta ideala pentru fiecare zi 🔥
 🔋 Acumulator 1000 mAh - tine toata ziua
 ⚡ Incarcare rapida Type-C
 👌 Convenabil, usor, in orice buzunar
-🎨 Culori: ❤️ Rosu - 🤍 Alb - 💚 Turcoaz
 
 ---
 
@@ -332,8 +375,11 @@ Varianta ideala pentru fiecare zi 🔥
 💨 Насыщенный вкус — 0.8Ω Mesh Pod
 🔋 Батарея 1000 mAh — держит целый день
 ⚡ Type-C быстрая зарядка
-👌 Удобный, лёгкий, в любой карман
-🎨 Цвета: ❤️ Красный - 🤍 Белый - 💚 Бирюзовый`,
-    flavors: [],
+👌 Удобный, лёгкий, в любой карман`,
+    flavors: [
+      "❤️ Red",
+      "🤍 White",
+      "🩵 Light Blue",
+    ],
   },
 ];

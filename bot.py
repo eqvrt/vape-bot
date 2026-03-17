@@ -50,6 +50,7 @@ PRODUCT_NAMES = {
     "elf_liq":      "Elf LIQ 30ML • 50MG",
     "xros_series":  "XROS Series 0.6",
     "xros5_mini":   "XROS 5 Mini",
+    "xros5_nano":   "XROS 5 Nano",
     "xros4_mini":   "XROS 4 Mini",
     "chaser_lux":   "CHASER LUX 30ML",
     "chaser_ultra": "CHASER ULTRA 30ML",
@@ -65,6 +66,11 @@ PRODUCT_FLAVORS = {
     "elf_liq":      ["🍍 Pineapple Ice", "😑 Raspberry Lychee", "🍎 Double Apple", "🌹 Jasmine Raspberry", "🖤 Blackberry Lemon", "🍎 Apple Peach", "😑 Blueberry Raspberry", "🍎 Apple Pear", "💙 Blue Razz Ice", "🍍 Pineapple Colada", "🍎 Sour Apple", "💞 Pink Grapefruit", "💕 Pink Lemonade", "🍉 Watermelon", "🌹 Blueberry Rose Mint", "🥶 Blue Razz Lemonade", "🥰 Raspberry Lychee 2", "🥥 Kiwi Passion Guava", "😑 Blueberry Sour Raspberry", "😃 Cherry", "😄 Watermelon Cherry", "😖 Strawberry Cherry Lemon", "😏 Strawberry Raspberry Cherry Ice", "🍋 Lemon Lime"],
     "chaser_lux":   ["🍓 Blueberry Raspberry", "🥤 Berry Lemonade", "🍎 Sour Apple", "🍉🍬 Sour Watermelon Candy", "🍉 Watermelon Raspberry", "🫂 Energetic", "🥶 Berry Needles", "😃 Cherry Lemon", "🥳 Coconut Melon"],
     "chaser_ultra": ["🍓 Wild Strawberry", "🍉🍋 Watermelon Lemon", "🫐 Triple Raspberry", "🫐🍇 Blackberry Sour Raspberry", "🍓🍒 Triple Berry"],
+    "xros5_mini":   ["🖤 Mist Black", "🤍 Mist White", "🟠 Retro Orange"],
+    "xros5_nano":   ["🤍 Nacre"],
+    "xros4_mini":   ["🥂 Champagne Gold", "💛 Camo Yellow", "🩷 Ice Pink", "🖤 Black"],
+    "xros_pro2":    ["💚 Gem Green", "✨ Glittering Gold"],
+    "xros_mini":    ["❤️ Red", "🤍 White", "🩵 Light Blue"],
 }
 
 
