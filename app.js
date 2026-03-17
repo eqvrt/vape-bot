@@ -499,8 +499,25 @@ function submitOrder() {
 }
 
 // ════════════════════════════════════════════════════════
+//  STOCK — citește din stock.json (actualizat de proprietar)
+// ════════════════════════════════════════════════════════
+async function loadStock() {
+  try {
+    const resp = await fetch('stock.json?t=' + Date.now());
+    if (!resp.ok) return;
+    const stock = await resp.json();
+    CATALOG.forEach(p => {
+      if (stock[p.id] !== undefined) p.stock = stock[p.id];
+    });
+  } catch (e) {
+    // folosește stocul implicit din catalog.js
+  }
+}
+
+// ════════════════════════════════════════════════════════
 //  INIT
 // ════════════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   buildEmojiBg();
+  await loadStock();
 });
