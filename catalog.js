@@ -1,4 +1,4 @@
-// ═══════════════════════════════════════════════════════════════════
+  // ═══════════════════════════════════════════════════════════════════
 //  CATALOG PRODUSE — VapeLiquid Mini App
 //  ⚠️  OWNER: modifică câmpul 'stock' pentru a actualiza stocul!
 //  ⚠️  IMAGES: înlocuiește URL-urile cu link-uri directe de pe ibb.co
@@ -13,7 +13,7 @@ const CATALOG = [
     badge: "🔥",
     price: 99,
     stock: 10,       // ← SCHIMBĂ STOCUL AICI
-    image: "https://ibb.co/qFFzXKnh",   // înlocuiește cu link direct i.ibb.co/...
+    image: "https://i.ibb.co/jZZdBm5q/chaser1.jpg",   // înlocuiește cu link direct i.ibb.co/...
     description: `Максимальная крепость. Максимальный вкус.
 Компактный формат 10 мл — удобно брать с собой 💨
 
@@ -31,7 +31,7 @@ const CATALOG = [
     badge: "😈",
     price: 230,
     stock: 8,        // ← SCHIMBĂ STOCUL AICI
-    image: "https://ibb.co/3m2R0qXm",
+    image: "https://i.ibb.co/v4pXJG54/monoshka.jpg",
     description: `Это не для слабых.
 70MG — это мощь, которую ты почувствуешь с первой затяжки 💨⚡️
 
@@ -54,7 +54,7 @@ const CATALOG = [
     badge: "✨",
     price: 200,
     stock: 15,       // ← SCHIMBĂ STOCUL AICI
-    image: "https://ibb.co/VbD6R6t",
+    image: "https://i.ibb.co/ZvK959V/elf-liq.jpg",
     description: `💥 Вкусы, которые взорвут твою палитру!
 Только для тех, кто любит яркий, насыщенный и мощный пар ⚡️
 
@@ -93,7 +93,7 @@ const CATALOG = [
     badge: "✨",
     price: 70,
     stock: 20,       // ← SCHIMBĂ STOCUL AICI
-    image: "https://ibb.co/SX48jW8S",
+    image: "https://i.ibb.co/271Q9mQJ/kartridj.jpg",
     description: `💨 Компактно. Стильно. Максимум вкуса!
 Идеально подходит для твоего POD — яркий пар, насыщенный вкус ⚡️
 
@@ -108,7 +108,7 @@ const CATALOG = [
     badge: "☄️",
     price: 450,
     stock: 5,        // ← SCHIMBĂ STOCUL AICI
-    image: "https://ibb.co/39npbSTV",
+    image: "https://i.ibb.co/1tkrNR0B/xros-5-mini.jpg",
     description: `Ищешь надежный POD на каждый день?
 XROS 5 Mini — это максимум вкуса и удобства 🔥
 
@@ -127,7 +127,7 @@ XROS 5 Mini — это максимум вкуса и удобства 🔥
     badge: "☄️",
     price: 400,
     stock: 7,        // ← SCHIMBĂ STOCUL AICI
-    image: "https://ibb.co/d0Xzvy68",
+    image: "https://i.ibb.co/zhC0gwbq/xros-4-mini.jpg",
     description: `Ищешь удобный POD с отличной автономностью?
 XROS 4 Mini — стабильная работа, чистый вкус 🔥
 
@@ -146,7 +146,7 @@ XROS 4 Mini — стабильная работа, чистый вкус 🔥
     badge: "💎",
     price: 190,
     stock: 12,       // ← SCHIMBĂ STOCUL AICI
-    image: "https://ibb.co/SXVGVcSG",
+    image: "https://i.ibb.co/tMYFYzRF/chaser-ultra.jpg",
     description: `🔥 30 ml / 65 mg — крепко, ярко и насыщенно.
 Идеально для POD-систем и любителей сочных вкусов.
 
@@ -169,7 +169,7 @@ XROS 4 Mini — стабильная работа, чистый вкус 🔥
     badge: "💨",
     price: 180,
     stock: 9,        // ← SCHIMBĂ STOCUL AICI
-    image: "https://ibb.co/FbnKxZty",
+    image: "https://i.ibb.co/gM63jqCf/chaser-ultra-lux.jpg",
     description: `🔥 30 ml / 50 mg — насыщенный вкус и отличный удар.
 Идеально для POD-систем и на каждый день.
 
@@ -188,7 +188,7 @@ XROS 4 Mini — стабильная работа, чистый вкус 🔥
     badge: "🌀",
     price: 350,
     stock: 4,        // ← SCHIMBĂ STOCUL AICI
-    image: "https://ibb.co/GQ2HmPy0",
+    image: "https://i.ibb.co/SwnfSvbP/elfbar.jpg",
     description: `3 вкуса в одном устройстве 💨
 Стильная одноразка с возможностью переключать 3 разных вкуса!
 
@@ -204,7 +204,7 @@ XROS 4 Mini — стабильная работа, чистый вкус 🔥
     badge: "🔥",
     price: 699,
     stock: 3,        // ← SCHIMBĂ STOCUL AICI
-    image: "https://ibb.co/WN4DV6yv",
+    image: "https://i.ibb.co/wZFJcRWh/xros-pro-2.jpg",
     description: `Хочешь мощный, стильный и удобный POD?
 XROS PRO 2 — это именно то, что тебе нужно.
 
@@ -222,7 +222,7 @@ XROS PRO 2 — это именно то, что тебе нужно.
     badge: "🔥",
     price: 330,
     stock: 6,        // ← SCHIMBĂ STOCUL AICI
-    image: "https://ibb.co/GvKzd2Ss",
+    image: "https://i.ibb.co/qMtTDsQ0/xros-mini.jpg",
     description: `Компактный, стильный и очень вкусный POD!
 Идеальный вариант на каждый день 🔥
 
