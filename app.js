@@ -290,38 +290,12 @@ function renderQtyPayStep(container) {
     </div>`;
   container.appendChild(sec1);
 
-  const div = document.createElement('div');
-  div.className = 'divider';
-  container.appendChild(div);
-
-  const sec2 = document.createElement('div');
-  sec2.className = 's-section';
-  sec2.innerHTML = `
-    <div class="s-label">Metodă de plată / Способ оплаты</div>
-    <div class="pay-list">
-      <div class="pay-opt${order.payMethod === 'telegram_pay' ? ' sel' : ''}" onclick="selectPay('telegram_pay',this)">
-        <span class="pay-icon">💳</span>
-        <div class="pay-info">
-          <div class="pay-label">Telegram Pay</div>
-          <div class="pay-desc">Plată online securizată / Безопасная оплата</div>
-        </div>
-        <div class="pay-check">${order.payMethod === 'telegram_pay' ? '✓' : ''}</div>
-      </div>
-      <div class="pay-opt${order.payMethod === 'contact' ? ' sel' : ''}" onclick="selectPay('contact',this)">
-        <span class="pay-icon">📲</span>
-        <div class="pay-info">
-          <div class="pay-label">Contactați-mă / Свяжитесь</div>
-          <div class="pay-desc">Vă contactăm la numărul dvs.</div>
-        </div>
-        <div class="pay-check">${order.payMethod === 'contact' ? '✓' : ''}</div>
-      </div>
-    </div>`;
-  container.appendChild(sec2);
+  order.payMethod = 'contact';
 
   renderSummary(container);
 
   updateQtyButtons(maxQty);
-  setNextBtn('Continuă →', false, order.payMethod !== null);
+  setNextBtn('Continuă →', false, true);
 }
 
 function changeQty(delta) {
